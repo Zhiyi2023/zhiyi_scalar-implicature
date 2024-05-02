@@ -1,6 +1,10 @@
-const jsPsych = initJsPsych();
-let timeline = [];
 
+let timeline = [];
+jsPsych = initJsPsych({
+    on_finish: function(data) {
+        proliferate.submit({"trials": data.values()});
+    }
+});
 
 const irb = {
     // Which plugin to use
