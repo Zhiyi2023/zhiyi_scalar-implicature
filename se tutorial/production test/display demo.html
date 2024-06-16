@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Production Experiment</title>
+    <script src="https://unpkg.com/jspsych@7.3.4"></script>
+    <script src="../plugin/plugin-html-multi-slider-response.js"></script>
+    <script src="../plugin/plugin-html-button-response.js"></script>
+    <link href="https://unpkg.com/jspsych@7.3.4/css/jspsych.css" rel="stylesheet" type="text/css" />
+    <style>
+      img {
+        width: 600px;
+      }
+    </style>
+  </head>
+  <body></body>
+
+  <script>
+
+    var jsPsych = initJsPsych({
+      default_iti: 250, 
+      on_finish: function() {
+        jsPsych.data.displayData();
+      }
+    });
+
+    var instruction = {
+      type: jsPsychHtmlButtonResponse,
+      stimulus: '<p> You are a player of a video game, which aiming to earn money as soon as possible. Now, you are checking the condition of your characters.</p >',
+      choices: ['Continue']
+    };
+    
+
+    //energy trials round 1 
+
+    //energy instruction
+    var instruction_energy = {
+      type: jsPsychHtmlButtonResponse,
+      stimulus: '<img src="images_production/instruction_energy.png" style="width:500px; height:auto; margin: 50px auto;">'+
+      '<p> Here is your characher.<br>Through the dialogue box, your character, the energy bar, and a sentence are provided, you can check the energy condition of your character.</p>',
+      choices: ['Continue']
+    };
+
+    var energy_trial_1 = {
+      type: jsPsychHtmlMultiSliderResponse,
+      stimulus: '<img src="images_production/energy1.png" style="width:350px; height:auto; margin: 50px auto;">' +
+      '<p>How likely do you think the dialogue box will display the following sentences ? <br> Make sure that your responses sum up to 100.</p>',
+      num_sliders: 3,
+      force_total: 100,
+      slider_labels: ["You are tired", "You are exhausted", "something else"],
+      slider_width: 800,
+      prompt: ''
+    };
+
+    timeline = [instruction].concat(instruction_energy, energy_trial_1),
+
+    jsPsych.run(timeline);
+
+  </script>
+</html>
+

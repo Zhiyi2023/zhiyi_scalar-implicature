@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Production Experiment</title>
+    <script src="https://unpkg.com/jspsych@7.3.4"></script>
+    <script src="../plugin/plugin-html-multi-slider-response.js"></script>
+    <script src="../plugin/plugin-html-button-response.js"></script>
+    <link href="https://unpkg.com/jspsych@7.3.4/css/jspsych.css" rel="stylesheet" type="text/css" />
+    <style>
+      img {
+        width: 600px;
+      }
+    </style>
+  </head>
+  <body></body>
+
+  <script>
+
+    var jsPsych = initJsPsych({
+      default_iti: 250, 
+      on_finish: function() {
+        jsPsych.data.displayData();
+      }
+    });
+
+    var instruction = {
+      type: jsPsychHtmlButtonResponse,
+      stimulus: '<p> You are a player of a video game, which aiming to earn money as soon as possible. Now, you are checking the condition of your characters.</p >',
+      choices: ['Continue']
+    };
+    
+    
+    var instruction_energy = {
+      type: jsPsychHtmlButtonResponse,
+      stimulus: '<p> Here is your characher. Through the dialogue box with yout character, the energy bar, and a sentence provided, you can check the energy condition of your character. </p >',
+      choices: ['Continue']
+    };
+
+    var instruction = {
+      type: jsPsychHtmlButtonResponse,
+      stimulus: '<p> You are a player of a video game, which aiming to earn money as soon as possible. Now, you are checking the condition of your characters.</p >',
+      choices: ['Continue']
+    };
+
+
+
+
+    function createTrial(imageType, imageNumber, labels) {
+    return {
+        type: jsPsychHtmlMultiSliderResponse,
+        stimulus: `<img src="images_production/${imageType}${imageNumber}.png" style="width:350px; height:auto; margin: 50px auto;">` +
+        '<p>How likely do you think the dialogue box will display the following sentences ? <br> Make sure that your responses sum up to 100.</p>',
+        num_sliders: 3,
+        force_total: 100,
+        slider_labels: labels,
+        slider_width: 800,
+        prompt: ''
+    };
+}
+
+    // energy trials
+    var energy_trials = [];
+    for (let i = 1; i <= 9; i++) {
+        energy_trials.push(createTrial('energy', i, ["You are tired", "You are exhausted", "something else"]));
+    }
+
+    var energy_trials_round2 = [];
+    for (let i = 1; i <= 9; i++) {
+        energy_trials_round2.push(createTrial('energy', i, ["You are tired", "You are exhausted", "something else"]));
+    }
+
+    // pet trials
+    var pet_trials = [];
+    for (let i = 1; i <= 9; i++) {
+        pet_trials.push(createTrial('pet', i, ["Your dog is hungry and tired", "Your dog is starving", "something else"]));
+    }
+
+    var pet_trials_round2 = [];
+    for (let i = 1; i <= 9; i++) {
+        pet_trials_round2.push(createTrial('pet', i, ["Your dog is hungry and tired", "Your dog is starving", "something else"], ));
+    }
+
+    // wealth trials
+    var wealth_trials = [];
+    for (let i = 1; i <= 9; i++) {
+        wealth_trials.push(createTrial('wealth', i, ["You are poor", "You are destitute", "something else"], ));
+    }
+
+    var wealth_trials_round2 = [];
+    for (let i = 1; i <= 9; i++) {
+        wealth_trials_round2.push(createTrial('wealth', i, ["You are poor", "You are destitute", "something else"]));
+    }
+
+ 
+
+
+    var timeline_energy = [];
+    timeline_energy = timeline_energy.concat(energy_trials); // adding first round trials
+    timeline_energy = timeline_energy.concat(energy_trials_round2); // adding second trials
+
+    var timeline_pet = [];
+    timeline_pet = timeline_pet.concat(pet_trials); // adding first round trials
+    timeline_pet = timeline_pet.concat(pet_trials_round2); // adding second trials 
+
+
+    var timeline_wealth = [];
+    timeline_wealth = timeline_wealth.concat(wealth_trials); // adding first round trials
+    timeline_wealth = timeline_wealth.concat(wealth_trials_round2); // adding second trials
+
+
+    
+    // randomdized
+    var shuffled_timeline_e = jsPsych.randomization.shuffle(timeline_energy);
+    var shuffled_timeline_p = jsPsych.randomization.shuffle(timeline_pet);
+    var shuffled_timeline_w = jsPsych.randomization.shuffle(timeline_wealth);
+
+    timeline = [instruction].concat(shuffled_timeline_e, shuffled_timeline_p, shuffled_timeline_w)
+
+
+    // run
+    jsPsych.run(timeline);
+
+
+  </script>
+</html>
