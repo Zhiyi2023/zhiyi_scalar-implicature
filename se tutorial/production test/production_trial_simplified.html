@@ -23,32 +23,47 @@
       }
     });
 
+
+    var consent_form = {
+      type: jsPsychHtmlButtonResponse,
+      stimulus: '<p> This is the consent form.(To be edited)</p >',
+      choices: ['Continue']
+    };
+
+
     var instruction = {
       type: jsPsychHtmlButtonResponse,
-      stimulus: '<p> You are a player of a video game, which aiming to earn money as soon as possible. Now, you are checking the condition of your characters.</p >',
+      stimulus: '<p> You are a player in a video game, and your goal is to earn money as quickly as possible. <br> Please follow the instructions to check the condition of your characters.</p >',
       choices: ['Continue']
     };
     
     
     var instruction_energy = {
       type: jsPsychHtmlButtonResponse,
-      stimulus: '<p> Here is your characher. Through the dialogue box with yout character, the energy bar, and a sentence provided, you can check the energy condition of your character. </p >',
+      stimulus: '<img src="images_production/instruction_energy.png" style="width:500px; height:auto; margin: 30px auto;">' +
+        '<p> Here is your character.<br> Through the dialogue box, you can check his energy level on the energy bar,<br> and the descriptive sentence about his condition will adjust accordingly. </p >',
       choices: ['Continue']
     };
 
-    var instruction = {
+    var instruction_pet = {
       type: jsPsychHtmlButtonResponse,
-      stimulus: '<p> You are a player of a video game, which aiming to earn money as soon as possible. Now, you are checking the condition of your characters.</p >',
+      stimulus: '<img src="images_production/instruction_pet.png" style="width:500px; height:auto; margin: 30px auto;">' +
+      '<p> Here is your pet.<br> Through the dialogue box, you can check its blood sugar level on the energy bar,<br> and the descriptive sentence about its condition will adjust accordingly.</p >',
       choices: ['Continue']
     };
 
-
+    var instruction_wealth = {
+      type: jsPsychHtmlButtonResponse,
+      stimulus: '<img src="images_production/instruction_wealth.png" style="width:500px; height:auto; margin: 30px auto;">' +
+      '<p> Here is your character.<br> Through the dialogue box, you can check his financial status on the wealth bar,<br> and the descriptive sentence about his condition will adjust accordingly.</p >',
+      choices: ['Continue']
+    };
 
 
     function createTrial(imageType, imageNumber, labels) {
     return {
         type: jsPsychHtmlMultiSliderResponse,
-        stimulus: `<img src="images_production/${imageType}${imageNumber}.png" style="width:350px; height:auto; margin: 50px auto;">` +
+        stimulus: `<img src="images_production/${imageType}${imageNumber}.png" style="width:500px; height:auto; margin: 30px auto;">` +
         '<p>How likely do you think the dialogue box will display the following sentences ? <br> Make sure that your responses sum up to 100.</p>',
         num_sliders: 3,
         force_total: 100,
@@ -61,34 +76,34 @@
     // energy trials
     var energy_trials = [];
     for (let i = 1; i <= 9; i++) {
-        energy_trials.push(createTrial('energy', i, ["You are tired", "You are exhausted", "something else"]));
+        energy_trials.push(createTrial('energy', i, ["Your character is tired", "Your character is exhausted", "something else"]));
     }
 
     var energy_trials_round2 = [];
     for (let i = 1; i <= 9; i++) {
-        energy_trials_round2.push(createTrial('energy', i, ["You are tired", "You are exhausted", "something else"]));
+        energy_trials_round2.push(createTrial('energy', i, ["Your character is tired", "Your character is exhausted", "something else"]));
     }
 
     // pet trials
     var pet_trials = [];
     for (let i = 1; i <= 9; i++) {
-        pet_trials.push(createTrial('pet', i, ["Your dog is hungry and tired", "Your dog is starving", "something else"]));
+        pet_trials.push(createTrial('pet', i, ["Your pet is hungry", "Your dog is starving", "something else"]));
     }
 
     var pet_trials_round2 = [];
     for (let i = 1; i <= 9; i++) {
-        pet_trials_round2.push(createTrial('pet', i, ["Your dog is hungry and tired", "Your dog is starving", "something else"], ));
+        pet_trials_round2.push(createTrial('pet', i, ["Your pet is hungry", "Your dog is starving", "something else"], ));
     }
 
     // wealth trials
     var wealth_trials = [];
     for (let i = 1; i <= 9; i++) {
-        wealth_trials.push(createTrial('wealth', i, ["You are poor", "You are destitute", "something else"], ));
+        wealth_trials.push(createTrial('wealth', i, ["Your character is poor", "Your character is destitute", "something else"], ));
     }
 
     var wealth_trials_round2 = [];
     for (let i = 1; i <= 9; i++) {
-        wealth_trials_round2.push(createTrial('wealth', i, ["You are poor", "You are destitute", "something else"]));
+        wealth_trials_round2.push(createTrial('wealth', i, ["Your character is poor", "Your character is destitute", "something else"]));
     }
 
  
@@ -114,7 +129,7 @@
     var shuffled_timeline_p = jsPsych.randomization.shuffle(timeline_pet);
     var shuffled_timeline_w = jsPsych.randomization.shuffle(timeline_wealth);
 
-    timeline = [instruction].concat(shuffled_timeline_e, shuffled_timeline_p, shuffled_timeline_w)
+    timeline = [consent_form].concat(instruction, instruction_energy, shuffled_timeline_e, instruction_pet, shuffled_timeline_p, instruction_wealth, shuffled_timeline_w)
 
 
     // run
