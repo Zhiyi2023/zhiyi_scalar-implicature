@@ -2,6 +2,11 @@
 <html>
   <head>
     <title>Production Experiment</title>
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Proliferate -->
+    <script src="https://proliferate.alps.science/static/js/proliferate.js" type="text/javascript"></script>
+
     <script src="https://unpkg.com/jspsych@7.3.4"></script>
     <script src="https://unpkg.com/@jspsych/plugin-survey-text@1.1.3"></script>
     <script src="../plugin/plugin-html-multi-slider-response.js"></script>
@@ -15,6 +20,7 @@
     </style>
   </head>
   <body></body>
+  
 
   <script>
 
@@ -30,11 +36,11 @@
                 jsPsych.setProgressBar(0); 
             }
         },
-        on_finish: function() {
+        on_finish: function(data) {
             jsPsych.data.displayData();
+            proliferate.submit({"trials": data.values()});
         }
       });
-
     
     var fullscreenFunction = {
       type:jsPsychFullscreen,
@@ -52,15 +58,13 @@
       data: { is_experiment: false }
     };
 
-
     var instruction = {
       type: jsPsychHtmlButtonResponse,
       stimulus: '<p> You are a player in a video game, and your goal is to earn money as quickly as possible. <br> Please follow the instructions to check the condition of your characters.</p >',
       choices: ['Continue'],
       data: { is_experiment: false }
     };
-    
-    
+     
     var instruction_energy = {
       type: jsPsychHtmlButtonResponse,
       stimulus: '<img src="images_production/instruction_energy.png" style="width:500px; height:auto; margin: 30px auto;">' +
@@ -155,7 +159,7 @@
         {prompt: 'If you encountered any technical difficulties, found anything odd,<br> or if you have any other comments about the experiment that you would like to share with us,<br> please type them in the box below:', rows: 5}
       ],
       choices: ['Finish'],
-      data: { is_experiment: false }
+      data: { is_experiment: true }
     }
     
     // randomdized
