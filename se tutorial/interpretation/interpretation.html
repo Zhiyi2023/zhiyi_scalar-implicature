@@ -9,7 +9,9 @@
 
     <script src="https://unpkg.com/jspsych@7.3.4"></script>
     <script src="https://unpkg.com/@jspsych/plugin-survey-text@1.1.3"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-preload@1.1.3"></script>
     <script src="../plugin/plugin-fullscreen.js"></script>
+    <script src="jspsych/plugin-preload.js"></script>
     <script src="plugin-html-keyboard-response.js"></script>
     <script src="../plugin/plugin-html-coin-betting-response.js"></script>
     <script src="../plugin/plugin-html-button-response.js"></script>
@@ -133,6 +135,11 @@
         }
       }
     };
+
+    var preload = {
+    type: jsPsychPreload,
+    auto_preload: true
+  }
 
     var instruction = {
       type: jsPsychHtmlButtonResponse,
@@ -437,11 +444,7 @@
     var shuffled_timeline_p = jsPsych.randomization.shuffle(pet);
     var shuffled_timeline_w = jsPsych.randomization.shuffle(wealth);
 
-    timeline = [consent1].concat(consent2, instruction, fullscreenFunction, instruction_energy, shuffled_timeline_e, instruction_pet, shuffled_timeline_p, instruction_wealth, shuffled_timeline_w, feedback)
-
-
-
-
+    timeline = [preload].concat(consent1, consent2, instruction, fullscreenFunction, instruction_energy, shuffled_timeline_e, instruction_pet, shuffled_timeline_p, instruction_wealth, shuffled_timeline_w, feedback)
 
     // run
     jsPsych.run(timeline);
