@@ -136,24 +136,49 @@
 
     var instruction = {
       type: jsPsychHtmlButtonResponse,
-      stimulus: "<p> In this experiment, you will see several scenes and answer questions about them. <br> On each slide, you will see one scene and several relevant images. <br> Please distribute 10 coins across the likely images based on the conversation in the scene. <br> Note: You are not required to assign coins to every image, <br> so please distribute the coins only among the likely images. <br> The experiment is conducted in fullscreen mode. <br> When you're ready to begin, please press the space bar.</p >",
+      stimulus: "<p> In this experiment, you will see several scenes and answer questions about them. <br> On each slide, you will see one scene and several relevant images. <br> Please distribute 10 coins across the likely images based on the conversation in the scene. <br> Note: You are not required to assign coins to every image, <br> so please distribute the coins only among the likely images. <br> The experiment is conducted in fullscreen mode. <br> When you're ready to begin, please click 'continue'.</p >",
       choices: ['Continue'],
     };
 
-    var trial_energy_1st = {
+    var instruction_energy = {
+      type: jsPsychHtmlButtonResponse,
+      stimulus: '<img src="images_production/instruction_energy.png" style="width:500px; height:auto; margin: 30px auto;">' +
+        '<p> <p> In the first part of the experiment, you will see screenshots like the one above that indicate how much energy your character has left.<br> On the following pages, the condition description will be completed.<br> Please distribute the coins based on the sentence shows on the dialogbox. <br> Note: You are not required to assign coins to every image, <br> so please distribute the coins only among the likely images.</p>'
+      ,choices: ['Continue'],
+      data: { is_experiment: true }
+    };
+
+    var instruction_pet = {
+      type: jsPsychHtmlButtonResponse,
+      stimulus: '<img src="images_production/instruction_pet.png" style="width:500px; height:auto; margin: 30px auto;">' +
+      '<p><p> In the second part of the experiment, you will see screenshots like the one above that indicate how well-fed your pet is. <br> On the following pages, the condition description will be completed.<br> Again, please distribute the coins based on the sentence shows on the dialogbox. <br> Note: You are not required to assign coins to every image, <br> so please distribute the coins only among the likely images.</p>',
+      choices: ['Continue'],
+      data: { is_experiment: true }
+    };
+
+    var instruction_wealth = {
+      type: jsPsychHtmlButtonResponse,
+      stimulus: '<img src="images_production/instruction_wealth.png" style="width:500px; height:auto; margin: 30px auto;">' +
+      '<p> In the last part of the experiment, you will see screenshots like the one above that indicate how wealthy your character is.<br> Again, please distribute the coins based on the sentence shows on the dialogbox. <br> Note: You are not required to assign coins to every image, <br> so please distribute the coins only among the likely images.</p>', 
+      choices: ['Continue'],
+      data: { is_experiment: true }
+    };
+
+
+    var trial_energy_1 = {
       type: jsPsychHtmlCoinBettingResponse,
       stimulus: '<img src="tired.png" style="width:300px; height:auto; margin: 30px auto; ">'+
-      '<p>How full the energy bar do you think fits the discription? <br> Use the "+" and "&ndash;" buttons to distribute 10 coins across the likely states.</p>',
+      '<p>Which of the following bars do you think is shown on the screen? <br> Use the "+" and "–" buttons to distribute 10 coins across the likely states.</p>',
       images: [
-        "./scalar/energy1.png",
-        "./scalar/energy2.png",
-        "./scalar/energy3.png",
-        "./scalar/energy4.png",
-        "./scalar/energy5.png",
-        "./scalar/energy6.png",
-        "./scalar/energy7.png",
-        "./scalar/energy8.png",
         "./scalar/energy9.png",
+        "./scalar/energy8.png",
+        "./scalar/energy7.png",
+        "./scalar/energy6.png",
+        "./scalar/energy5.png",
+        "./scalar/energy4.png",
+        "./scalar/energy3.png",
+        "./scalar/energy2.png",
+        "./scalar/energy1.png",
     ],
     on_finish: function() {
         var curr_progress_bar_value = jsPsych.getProgressBarCompleted();
@@ -161,20 +186,20 @@
       }
     };
 
-    var trial_energy_2nd = {
+    var trial_energy_2 = {
       type: jsPsychHtmlCoinBettingResponse,
       stimulus: '<img src="exhausted.png" style="width:300px; height:auto; margin: 30px auto;">' +
-      '<p>How full the energy bar do you think fits the discription? <br> Use the "+" and "&ndash;" buttons to distribute 10 coins across the likely states.</p>',
+      '<p>Which of the following bars do you think is shown on the screen? <br> Use the "+" and "–" buttons to distribute 10 coins across the likely states.</p>',
       images: [
-        "./scalar/energy1.png",
-        "./scalar/energy2.png",
-        "./scalar/energy3.png",
-        "./scalar/energy4.png",
-        "./scalar/energy5.png",
-        "./scalar/energy6.png",
-        "./scalar/energy7.png",
-        "./scalar/energy8.png",
         "./scalar/energy9.png",
+        "./scalar/energy8.png",
+        "./scalar/energy7.png",
+        "./scalar/energy6.png",
+        "./scalar/energy5.png",
+        "./scalar/energy4.png",
+        "./scalar/energy3.png",
+        "./scalar/energy2.png",
+        "./scalar/energy1.png",
     ],
     on_finish: function() {
         var curr_progress_bar_value = jsPsych.getProgressBarCompleted();
@@ -182,20 +207,62 @@
       }
     };
 
-    var trial_hungry_1st = {
+        var trial_energy_3 = {
       type: jsPsychHtmlCoinBettingResponse,
-      stimulus: '<img src="hungry.png" style="width:300px; height:auto; margin: 30px auto;">' +
-      '<p>How full the blood sugar bar do you think fits the discription? <br> Use the "+" and "&ndash;" buttons to distribute 10 coins across the likely states.</p>',
+      stimulus: '<img src="tired.png" style="width:300px; height:auto; margin: 30px auto; ">'+
+      '<p>Which of the following bars do you think is shown on the screen? <br> Use the "+" and "–" buttons to distribute 10 coins across the likely states.</p>',
       images: [
-        "./scalar/hungry1.png",
-        "./scalar/hungry2.png",
-        "./scalar/hungry3.png",
-        "./scalar/hungry4.png",
-        "./scalar/hungry5.png",
-        "./scalar/hungry6.png",
-        "./scalar/hungry7.png",
-        "./scalar/hungry8.png",
+        "./scalar/energy9.png",
+        "./scalar/energy8.png",
+        "./scalar/energy7.png",
+        "./scalar/energy6.png",
+        "./scalar/energy5.png",
+        "./scalar/energy4.png",
+        "./scalar/energy3.png",
+        "./scalar/energy2.png",
+        "./scalar/energy1.png",
+    ],
+    on_finish: function() {
+        var curr_progress_bar_value = jsPsych.getProgressBarCompleted();
+        jsPsych.setProgressBar(curr_progress_bar_value + (1/n_trials));
+      }
+    };
+
+    var trial_energy_4 = {
+      type: jsPsychHtmlCoinBettingResponse,
+      stimulus: '<img src="exhausted.png" style="width:300px; height:auto; margin: 30px auto;">' +
+      '<p>Which of the following bars do you think is shown on the screen? <br> Use the "+" and "–" buttons to distribute 10 coins across the likely states.</p>',
+      images: [
+        "./scalar/energy9.png",
+        "./scalar/energy8.png",
+        "./scalar/energy7.png",
+        "./scalar/energy6.png",
+        "./scalar/energy5.png",
+        "./scalar/energy4.png",
+        "./scalar/energy3.png",
+        "./scalar/energy2.png",
+        "./scalar/energy1.png",
+    ],
+    on_finish: function() {
+        var curr_progress_bar_value = jsPsych.getProgressBarCompleted();
+        jsPsych.setProgressBar(curr_progress_bar_value + (1/n_trials));
+      }
+    };
+
+    var trial_hungry_1 = {
+      type: jsPsychHtmlCoinBettingResponse,
+      stimulus: '<img src="hungry.png" style="width:500px; height:auto; margin: 30px auto;">' +
+      '<p>Which of the following bars do you think is shown on the screen? <br> Use the "+" and "–" buttons to distribute 10 coins across the likely states.</p>',
+      images: [
         "./scalar/hungry9.png",
+        "./scalar/hungry8.png",
+        "./scalar/hungry7.png",
+        "./scalar/hungry6.png",
+        "./scalar/hungry5.png",
+        "./scalar/hungry4.png",
+        "./scalar/hungry3.png",
+        "./scalar/hungry2.png",
+        "./scalar/hungry1.png",
       ],
       on_finish: function() {
         var curr_progress_bar_value = jsPsych.getProgressBarCompleted();
@@ -203,20 +270,20 @@
       }
     };
     
-    var trial_hungry_2nd = {
+    var trial_hungry_2 = {
       type: jsPsychHtmlCoinBettingResponse,
-      stimulus: '<img src="starving.png" style="width:300px; height:auto; margin: 30px auto;">' +
-      '<p>How full the blood sugar bar do you think fits the discription? <br> Use the "+" and "&ndash;" buttons to distribute 10 coins across the likely states.</p>',
+      stimulus: '<img src="starving.png" style="width:500px; height:auto; margin: 30px auto;">' +
+      '<p>Which of the following bars do you think is shown on the screen? <br> Use the "+" and "–" buttons to distribute 10 coins across the likely states.</p>',
       images: [
-        "./scalar/hungry1.png",
-        "./scalar/hungry2.png",
-        "./scalar/hungry3.png",
-        "./scalar/hungry4.png",
-        "./scalar/hungry5.png",
-        "./scalar/hungry6.png",
-        "./scalar/hungry7.png",
-        "./scalar/hungry8.png",
         "./scalar/hungry9.png",
+        "./scalar/hungry8.png",
+        "./scalar/hungry7.png",
+        "./scalar/hungry6.png",
+        "./scalar/hungry5.png",
+        "./scalar/hungry4.png",
+        "./scalar/hungry3.png",
+        "./scalar/hungry2.png",
+        "./scalar/hungry1.png",
       ],
       on_finish: function() {
         var curr_progress_bar_value = jsPsych.getProgressBarCompleted();
@@ -224,20 +291,41 @@
       }
     };
 
-    var trial_wealth_1st = {
+    var trial_hungry_3 = {
       type: jsPsychHtmlCoinBettingResponse,
-      stimulus: '<img src="poor.png" style="width:300px; height:auto; margin: 30px auto;">' +
-      '<p>How full the wealth bar do you think fits the discription? <br> Use the "+" and "&ndash;" buttons to distribute 10 coins across the likely states.</p>',
+      stimulus: '<img src="hungry.png" style="width:500px; height:auto; margin: 30px auto;">' +
+      '<p>Which of the following bars do you think is shown on the screen? <br> Use the "+" and "–" buttons to distribute 10 coins across the likely states.</p>',
       images: [
-        "./scalar/wealth1.png",
-        "./scalar/wealth2.png",
-        "./scalar/wealth3.png",
-        "./scalar/wealth4.png",
-        "./scalar/wealth5.png",
-        "./scalar/wealth6.png",
-        "./scalar/wealth7.png",
-        "./scalar/wealth8.png",
-        "./scalar/wealth9.png",
+        "./scalar/hungry9.png",
+        "./scalar/hungry8.png",
+        "./scalar/hungry7.png",
+        "./scalar/hungry6.png",
+        "./scalar/hungry5.png",
+        "./scalar/hungry4.png",
+        "./scalar/hungry3.png",
+        "./scalar/hungry2.png",
+        "./scalar/hungry1.png",
+      ],
+      on_finish: function() {
+        var curr_progress_bar_value = jsPsych.getProgressBarCompleted();
+        jsPsych.setProgressBar(curr_progress_bar_value + (1/n_trials));
+      }
+    };
+    
+    var trial_hungry_4 = {
+      type: jsPsychHtmlCoinBettingResponse,
+      stimulus: '<img src="starving.png" style="width:500px; height:auto; margin: 30px auto;">' +
+      '<p>Which of the following bars do you think is shown on the screen? <br> Use the "+" and "–" buttons to distribute 10 coins across the likely states.</p>',
+      images: [
+        "./scalar/hungry9.png",
+        "./scalar/hungry8.png",
+        "./scalar/hungry7.png",
+        "./scalar/hungry6.png",
+        "./scalar/hungry5.png",
+        "./scalar/hungry4.png",
+        "./scalar/hungry3.png",
+        "./scalar/hungry2.png",
+        "./scalar/hungry1.png",
       ],
       on_finish: function() {
         var curr_progress_bar_value = jsPsych.getProgressBarCompleted();
@@ -245,26 +333,93 @@
       }
     };
 
-    var trial_wealth_2nd = {
+
+
+    var trial_wealth_1 = {
       type: jsPsychHtmlCoinBettingResponse,
-      stimulus: '<img src="destitute.png" style="width:300px; height:auto; margin: 30px auto;">' +
-      '<p>How full the wealth bar do you think fits the discription? <br> Use the "+" and "&ndash;" buttons to distribute 10 coins across the likely states.</p>',
-      images:  [       
-        "./scalar/wealth1.png",
-        "./scalar/wealth2.png",
-        "./scalar/wealth3.png",
-        "./scalar/wealth4.png",
-        "./scalar/wealth5.png",
-        "./scalar/wealth6.png",
-        "./scalar/wealth7.png",
-        "./scalar/wealth8.png",
+      stimulus: '<img src="poor.png" style="width:500px; height:auto; margin: 30px auto;">' +
+      '<p>Which of the following bars do you think is shown on the screen? <br> Use the "+" and "–" buttons to distribute 10 coins across the likely states.</p>',
+      images: [
         "./scalar/wealth9.png",
+        "./scalar/wealth8.png",
+        "./scalar/wealth7.png",
+        "./scalar/wealth6.png",
+        "./scalar/wealth5.png",
+        "./scalar/wealth4.png",
+        "./scalar/wealth3.png",
+        "./scalar/wealth2.png",
+        "./scalar/wealth1.png",
       ],
       on_finish: function() {
         var curr_progress_bar_value = jsPsych.getProgressBarCompleted();
         jsPsych.setProgressBar(curr_progress_bar_value + (1/n_trials));
       }
     };
+
+    var trial_wealth_2 = {
+      type: jsPsychHtmlCoinBettingResponse,
+      stimulus: '<img src="destitute.png" style="width:500px; height:auto; margin: 30px auto;">' +
+      '<p>Which of the following bars do you think is shown on the screen? <br> Use the "+" and "–" buttons to distribute 10 coins across the likely states.</p>',
+      images:  [       
+       "./scalar/wealth9.png",
+        "./scalar/wealth8.png",
+        "./scalar/wealth7.png",
+        "./scalar/wealth6.png",
+        "./scalar/wealth5.png",
+        "./scalar/wealth4.png",
+        "./scalar/wealth3.png",
+        "./scalar/wealth2.png",
+        "./scalar/wealth1.png",
+      ],
+      on_finish: function() {
+        var curr_progress_bar_value = jsPsych.getProgressBarCompleted();
+        jsPsych.setProgressBar(curr_progress_bar_value + (1/n_trials));
+      }
+    };
+
+    var trial_wealth_3 = {
+      type: jsPsychHtmlCoinBettingResponse,
+      stimulus: '<img src="poor.png" style="width:500px; height:auto; margin: 30px auto;">' +
+      '<p>Which of the following bars do you think is shown on the screen? <br> Use the "+" and "–" buttons to distribute 10 coins across the likely states.</p>',
+      images: [
+        "./scalar/wealth9.png",
+        "./scalar/wealth8.png",
+        "./scalar/wealth7.png",
+        "./scalar/wealth6.png",
+        "./scalar/wealth5.png",
+        "./scalar/wealth4.png",
+        "./scalar/wealth3.png",
+        "./scalar/wealth2.png",
+        "./scalar/wealth1.png",
+      ],
+      on_finish: function() {
+        var curr_progress_bar_value = jsPsych.getProgressBarCompleted();
+        jsPsych.setProgressBar(curr_progress_bar_value + (1/n_trials));
+      }
+    };
+
+    var trial_wealth_4 = {
+      type: jsPsychHtmlCoinBettingResponse,
+      stimulus: '<img src="destitute.png" style="width:500px; height:auto; margin: 30px auto;">' +
+      '<p>Which of the following bars do you think is shown on the screen? <br> Use the "+" and "–" buttons to distribute 10 coins across the likely states.</p>',
+      images:  [       
+       "./scalar/wealth9.png",
+        "./scalar/wealth8.png",
+        "./scalar/wealth7.png",
+        "./scalar/wealth6.png",
+        "./scalar/wealth5.png",
+        "./scalar/wealth4.png",
+        "./scalar/wealth3.png",
+        "./scalar/wealth2.png",
+        "./scalar/wealth1.png",
+      ],
+      on_finish: function() {
+        var curr_progress_bar_value = jsPsych.getProgressBarCompleted();
+        jsPsych.setProgressBar(curr_progress_bar_value + (1/n_trials));
+      }
+    };
+
+
 
     var feedback = {
       type: jsPsychSurveyText,
@@ -282,11 +437,21 @@
       choices: [' '],
     };
 
+    var energy = [trial_energy_1, trial_energy_2, trial_energy_3, trial_energy_4];
+    var pet = [trial_hungry_1, trial_hungry_2, trial_hungry_3, trial_hungry_4]
+    var wealth = [trial_wealth_1, trial_wealth_2, trial_wealth_3, trial_wealth_4]
 
-    var exp =[trial_energy_1st, trial_energy_2nd, trial_hungry_1st, trial_hungry_2nd, trial_wealth_1st, trial_wealth_2nd];
-    var shuffled_timeline = jsPsych.randomization.shuffle(exp);
-    
-    timeline = [consent1].concat(consent2, instruction, fullscreenFunction, shuffled_timeline, feedback, end_of_experiment);
+
+    // randomdized
+    var shuffled_timeline_e = jsPsych.randomization.shuffle(energy);
+    var shuffled_timeline_p = jsPsych.randomization.shuffle(pet);
+    var shuffled_timeline_w = jsPsych.randomization.shuffle(wealth);
+
+    timeline = [consent1,consent2].concat(instruction, fullscreenFunction, instruction_energy, shuffled_timeline_e, instruction_pet, shuffled_timeline_p, instruction_wealth, shuffled_timeline_w, feedback)
+
+
+
+
 
     // run
     jsPsych.run(timeline);
