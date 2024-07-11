@@ -142,7 +142,7 @@
 
     var instruction_energy = {
       type: jsPsychHtmlButtonResponse,
-      stimulus: '<img src="images_production/instruction_energy.png" style="width:500px; height:auto; margin: 30px auto;">' +
+      stimulus: '<img src="instruction_energy.png" style="width:500px; height:auto; margin: 30px auto;">' +
         '<p> <p> In the first part of the experiment, you will see screenshots like the one above that indicate how much energy your character has left.<br> On the following pages, the condition description will be completed.<br> Please distribute the coins based on the sentence shows on the dialogbox. <br> Note: You are not required to assign coins to every image, <br> so please distribute the coins only among the likely images.</p>'
       ,choices: ['Continue'],
       data: { is_experiment: true }
@@ -150,7 +150,7 @@
 
     var instruction_pet = {
       type: jsPsychHtmlButtonResponse,
-      stimulus: '<img src="images_production/instruction_pet.png" style="width:500px; height:auto; margin: 30px auto;">' +
+      stimulus: '<img src="instruction_pet.png" style="width:500px; height:auto; margin: 30px auto;">' +
       '<p><p> In the second part of the experiment, you will see screenshots like the one above that indicate how well-fed your pet is. <br> On the following pages, the condition description will be completed.<br> Again, please distribute the coins based on the sentence shows on the dialogbox. <br> Note: You are not required to assign coins to every image, <br> so please distribute the coins only among the likely images.</p>',
       choices: ['Continue'],
       data: { is_experiment: true }
@@ -158,7 +158,7 @@
 
     var instruction_wealth = {
       type: jsPsychHtmlButtonResponse,
-      stimulus: '<img src="images_production/instruction_wealth.png" style="width:500px; height:auto; margin: 30px auto;">' +
+      stimulus: '<img src="instruction_wealth.png" style="width:500px; height:auto; margin: 30px auto;">' +
       '<p> In the last part of the experiment, you will see screenshots like the one above that indicate how wealthy your character is.<br> Again, please distribute the coins based on the sentence shows on the dialogbox. <br> Note: You are not required to assign coins to every image, <br> so please distribute the coins only among the likely images.</p>', 
       choices: ['Continue'],
       data: { is_experiment: true }
@@ -167,7 +167,7 @@
 
     var trial_energy_1 = {
       type: jsPsychHtmlCoinBettingResponse,
-      stimulus: '<img src="tired.png" style="width:300px; height:auto; margin: 30px auto; ">'+
+      stimulus: '<img src="tired.png" style="width:500px; height:auto; margin: 30px auto; ">'+
       '<p>Which of the following bars do you think is shown on the screen? <br> Use the "+" and "–" buttons to distribute 10 coins across the likely states.</p>',
       images: [
         "./scalar/energy9.png",
@@ -188,7 +188,7 @@
 
     var trial_energy_2 = {
       type: jsPsychHtmlCoinBettingResponse,
-      stimulus: '<img src="exhausted.png" style="width:300px; height:auto; margin: 30px auto;">' +
+      stimulus: '<img src="exhausted.png" style="width:500px; height:auto; margin: 30px auto;">' +
       '<p>Which of the following bars do you think is shown on the screen? <br> Use the "+" and "–" buttons to distribute 10 coins across the likely states.</p>',
       images: [
         "./scalar/energy9.png",
@@ -209,7 +209,7 @@
 
         var trial_energy_3 = {
       type: jsPsychHtmlCoinBettingResponse,
-      stimulus: '<img src="tired.png" style="width:300px; height:auto; margin: 30px auto; ">'+
+      stimulus: '<img src="tired.png" style="width:500px; height:auto; margin: 30px auto; ">'+
       '<p>Which of the following bars do you think is shown on the screen? <br> Use the "+" and "–" buttons to distribute 10 coins across the likely states.</p>',
       images: [
         "./scalar/energy9.png",
@@ -230,7 +230,7 @@
 
     var trial_energy_4 = {
       type: jsPsychHtmlCoinBettingResponse,
-      stimulus: '<img src="exhausted.png" style="width:300px; height:auto; margin: 30px auto;">' +
+      stimulus: '<img src="exhausted.png" style="width:500px; height:auto; margin: 30px auto;">' +
       '<p>Which of the following bars do you think is shown on the screen? <br> Use the "+" and "–" buttons to distribute 10 coins across the likely states.</p>',
       images: [
         "./scalar/energy9.png",
@@ -419,8 +419,6 @@
       }
     };
 
-
-
     var feedback = {
       type: jsPsychSurveyText,
       questions: [
@@ -428,14 +426,6 @@
       ],
       choices: ['Finish'],
     }
-
-
-    const end_of_experiment = {
-      type: jsPsychHtmlKeyboardResponse,
-      stimulus: '<p>This is the end of the experiment. Thank you for participation.</p><p>Please press the space bar to exit.</p>',
-      trial_duration: null,
-      choices: [' '],
-    };
 
     var energy = [trial_energy_1, trial_energy_2, trial_energy_3, trial_energy_4];
     var pet = [trial_hungry_1, trial_hungry_2, trial_hungry_3, trial_hungry_4]
