@@ -53,19 +53,21 @@
     var n_trials = 12;
 
     var jsPsych = initJsPsych({
-    default_iti: 250,
-    show_progress_bar: true,
-    auto_update_progress_bar: false, 
+      default_iti: 250,
+      show_progress_bar: true,
+      auto_update_progress_bar: false, 
 
-    on_finish: function(data) {
-      var vals = data.values()
-      // check if the participant went through the experiment
-      // or exited it during the consent forms
-      if (vals.length >= n_trials) {
+      on_finish: function(data) {
+        var vals = data.values()
+        // check if the participant went through the experiment
+        // or exited it during the consent forms
+        if (vals.length > n_trials) {
         // Transmit data to Proliferate
         proliferate.submit({"trials": data.values()});
+        } else {
+          jsPsych.data.displayData();
+        }
       }
-    }
   });
 
     var fullscreenFunction = {
