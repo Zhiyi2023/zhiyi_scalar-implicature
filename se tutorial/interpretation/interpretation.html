@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Production Experiment</title>
+    <title>Interpretation Experiment</title>
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Proliferate -->
@@ -64,7 +64,7 @@
       var vals = data.values()
       // check if the participant went through the experiment
       // or exited it during the consent forms
-      if (vals.length > n_trials) {
+      if (vals.length >= n_trials) {
         // Transmit data to Proliferate
         proliferate.submit({"trials": data.values()});
       }
