@@ -50,7 +50,7 @@
   </head>
   <body></body>
   <script>
-    var n_trials = 6;
+    var n_trials = 12;
 
     var jsPsych = initJsPsych({
     default_iti: 250,
@@ -143,22 +143,22 @@
 
     var instruction = {
       type: jsPsychHtmlButtonResponse,
-      stimulus: "<p> In this experiment, you will see several scenes and answer questions about them. <br> On each slide, you will see one scene and several relevant images. <br> Please distribute 10 coins across the likely images based on the conversation in the scene. <br> Note: You are not required to assign coins to every image, <br> so please distribute the coins only among the likely images. <br> The experiment is conducted in fullscreen mode. <br> When you're ready to begin, please click 'continue'.</p >",
+      stimulus: "<p> In this experiment, you will see several scenes and answer questions about them. <br> On each slide, you will see one scene and several relevant images. <br> Please distribute 10 coins across the likely images based on the conversation in the scene. <br><br> Note: You are not required to assign coins to every image, so please distribute the coins only among the likely images. <br> The experiment is conducted in fullscreen mode. When you're ready to begin, please click 'continue'.</p >",
       choices: ['Continue'],
     };
 
     var instruction_energy = {
       type: jsPsychHtmlButtonResponse,
       stimulus: '<img src="instruction_energy.png" style="width:500px; height:auto; margin: 30px auto;">' +
-        '<p> <p> In the first part of the experiment, you will see screenshots like the one above that indicate how much energy your character has left.<br> On the following pages, you will see different condition descriptions. <br> Please distribute the coins based on the description that is shown in the dialog box.</p>'
-      ,choices: ['Continue'],
+        '<p> <p> In the first part of the experiment, you will see screenshots like the one above that indicate how much energy your character has left.<br> On the following pages, you will see different condition descriptions. <br> Please distribute the coins based on the description that is shown in the dialog box.<br><br> Note: You are not required to assign coins to every image, <br> so please distribute the coins only among the likely images.</p>', 
+      choices: ['Continue'],
       data: { is_experiment: true }
     };
 
     var instruction_pet = {
       type: jsPsychHtmlButtonResponse,
       stimulus: '<img src="instruction_pet.png" style="width:500px; height:auto; margin: 30px auto;">' +
-      '<p><p> In the second part of the experiment, you will see screenshots like the one above that indicate how well-fed your pet is. <br> On the following pages, you will see different condition descriptions. <br> Please distribute the coins based on the description that is shown in the dialog box.</p>',
+      '<p><p> In the second part of the experiment, you will see screenshots like the one above that indicate how well-fed your pet is. <br> On the following pages, you will see different condition descriptions. <br> Please distribute the coins based on the description that is shown in the dialog box.<br><br> Note: You are not required to assign coins to every image, <br> so please distribute the coins only among the likely images.</p>', 
       choices: ['Continue'],
       data: { is_experiment: true }
     };
@@ -166,7 +166,7 @@
     var instruction_wealth = {
       type: jsPsychHtmlButtonResponse,
       stimulus: '<img src="instruction_wealth.png" style="width:500px; height:auto; margin: 30px auto;">' +
-      '<p> In the last part of the experiment, you will see screenshots like the one above that indicate how wealthy your character is.<br> Again, please distribute the coins based on the sentence shows on the dialogbox. <br> Note: You are not required to assign coins to every image, <br> so please distribute the coins only among the likely images.</p>', 
+      '<p> In the last part of the experiment, you will see screenshots like the one above that indicate how wealthy your character is.<br> Again, please distribute the coins based on the sentence shows on the dialogbox. <br><br> Note: You are not required to assign coins to every image, <br> so please distribute the coins only among the likely images.</p>', 
       choices: ['Continue'],
       data: { is_experiment: true }
     };
